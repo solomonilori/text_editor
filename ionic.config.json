@@ -1,5 +1,7 @@
 {
   "name": "text-editor",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
