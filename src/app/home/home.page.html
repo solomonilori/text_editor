@@ -14,8 +14,9 @@
   </ion-header>
 
   <div id="container">
-    <button color="primary">Create and Write</button> 
-    <button color="primary">Read File</button> 
+    <ion-button (click)="createAndWriteFile()">Create and Write</ion-button>
+    <ion-button (click)="readMyFile()">Read File</ion-button>
+    <br>
     <textarea name="" id="" cols="30" rows="10" [value]="stringValue"></textarea>
   </div>
 </ion-content>

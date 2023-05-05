@@ -15,7 +15,12 @@ export class HomePage implements OnInit {
 	ngOnInit(){
 		this.file.checkFile(this.file.dataDirectory, 'sample.txt')
 			.then(exist=>{
-				this.readMyFile();
+				if(exist){
+					this.readMyFile();
+				}else{
+					alert('File does not xiste');
+				}
+				
 			}).catch(err=>{
 				alert(err);
 			})
