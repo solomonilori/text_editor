@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { File } from '@awesome-cordova-plugins/file/ngx';
 
 @NgModule({
   imports: [
@@ -13,6 +13,9 @@ import { HomePageRoutingModule } from './home-routing.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule
+  ],
+  providers:[
+    File
   ],
   declarations: [HomePage]
 })
