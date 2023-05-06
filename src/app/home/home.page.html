@@ -15,8 +15,9 @@
 
   <div id="container">
     <ion-button (click)="createAndWriteFile()">Create and Write</ion-button>
+    <ion-button (click)="writeToFile()">Write to File</ion-button>
     <ion-button (click)="readMyFile()">Read File</ion-button>
     <br>
-    <textarea name="" id="" cols="30" rows="10" [value]="stringValue"></textarea>
+    <textarea name="" id="" cols="30" rows="10" [(ngModel)]="stringValue"></textarea>
   </div>
 </ion-content>

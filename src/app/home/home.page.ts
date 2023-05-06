@@ -33,7 +33,13 @@ export class HomePage implements OnInit {
 	}
 
 	async readMyFile(){
-		this.stringValue = await this.file.readAsText(this.file.dataDirectory,'sample.txt');
+		const myContent = await this.file.readAsText(this.file.dataDirectory,'sample.txt');
+		alert(myContent);
+	}
+
+	async writeToFile(){
+		const myBlob = new Blob([this.stringValue], { type: 'text/plain' });
+		this.file.writeExistingFile(this.file.dataDirectory,'sample.txt', myBlob);
 	}
 
 }
