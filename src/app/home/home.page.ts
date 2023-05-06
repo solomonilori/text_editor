@@ -27,9 +27,21 @@ export class HomePage implements OnInit {
 	}
 
 	async createAndWriteFile() {
-		this.file.createFile(this.file.dataDirectory, 'sample.txt', true);
-		const myBlob = new Blob([this.stringValue], { type: 'text/plain' });
-		this.file.writeExistingFile(this.file.dataDirectory,'sample.txt', myBlob);
+		this.file.createFile(this.file.dataDirectory, 'sample.txt', true)
+		.then(fEntry =>{
+			console.log('fEntry', fEntry);
+			const myBlob = new Blob([this.stringValue], { type: 'text/plain' });
+			this.file.writeExistingFile(this.file.dataDirectory,'sample.txt', myBlob)
+			.then(()=>{
+				console.log('New file is written');
+			})
+			.catch(err =>{
+				console.log('An error encountered while writting to file. ' + err);
+			});
+		}).catch(err =>{
+			console.log('An error occur while create file' + err)
+		});
+		
 	}
 
 	async readMyFile(){
@@ -39,7 +51,13 @@ export class HomePage implements OnInit {
 
 	async writeToFile(){
 		const myBlob = new Blob([this.stringValue], { type: 'text/plain' });
-		this.file.writeExistingFile(this.file.dataDirectory,'sample.txt', myBlob);
+		this.file.writeExistingFile(this.file.dataDirectory,'sample.txt', myBlob)
+		.then(()=>{
+			console.log('File written successfully');
+		})
+		.catch(err =>{
+			console.log('An error encountered while writting to file. ' + err);
+		});
 	}
 
 }
