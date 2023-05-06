@@ -45,8 +45,14 @@ export class HomePage implements OnInit {
 	}
 
 	async readMyFile(){
-		const myContent = await this.file.readAsText(this.file.dataDirectory,'sample.txt');
-		alert(myContent);
+		this.file.readAsText(this.file.dataDirectory,'sample.txt')
+		.then(myContent =>{
+			console.log('myContent', myContent);
+			alert(myContent);
+		}).catch(err =>{
+			console.log('An error encountered while trying to read from file. ' + err);
+		});
+		
 	}
 
 	async writeToFile(){
