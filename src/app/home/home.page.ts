@@ -45,14 +45,19 @@ export class HomePage implements OnInit {
 	}
 
 	async readMyFile(){
+		console.log('start reading file');
 		this.file.readAsText(this.file.dataDirectory,'sample.txt')
 		.then(myContent =>{
 			console.log('myContent', myContent);
 			alert(myContent);
 		}).catch(err =>{
 			console.log('An error encountered while trying to read from file. ' + err);
-		});
-		
+		}).finally(
+			()=>{
+				console.log('File reading completed');
+			}
+		);
+		console.log('leaving file reading');
 	}
 
 	async writeToFile(){
@@ -64,6 +69,22 @@ export class HomePage implements OnInit {
 		.catch(err =>{
 			console.log('An error encountered while writting to file. ' + err);
 		});
+	}
+
+	async readMyFileFromAsset(){
+		console.log('start reading file from asset');
+		this.file.readAsText('../../assets','assetsample.txt')
+		.then(myContent =>{
+			console.log('myContent', myContent);
+			alert(myContent);
+		}).catch(err =>{
+			console.log('An error encountered while trying to read from file in asset. ' + err);
+		}).finally(
+			()=>{
+				console.log('File reading completed');
+			}
+		);
+		console.log('leaving file reading');
 	}
 
 }
